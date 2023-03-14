@@ -9,11 +9,9 @@ from albumentations import (HorizontalFlip, ShiftScaleRotate, Normalize, Resize,
 from albumentations.pytorch import ToTensorV2
 from skimage import io, transform
 import matplotlib.pyplot as plt
+from data_preprocess import Nuclie_data, get_transforms, get_mask, image_convert, image_convert, mask_convert, plot_img
 
 ##################################
-
-#load functions
-execfile("./functions/data_preprocess.py")
 
 # Get cpu or gpu device for training.
 device = "cuda" if torch.cuda.is_available() else "mps" if torch.backends.mps.is_available() else "cpu"
@@ -32,5 +30,5 @@ train_loader = torch.utils.data.DataLoader(dataset=trainset, batch_size=10, shuf
 valid_loader = torch.utils.data.DataLoader(dataset=validset, batch_size=10)
 
 #view images and their corresponding combined marks
-plot_img(5)
+plot_img(5, train_loader, device)
 
