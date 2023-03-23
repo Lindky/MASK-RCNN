@@ -12,6 +12,9 @@ Software: Pytorch
 MASK-RCNN paper: 
 https://doi.org/10.48550/arXiv.1703.06870
 
+Google docs:
+https://docs.google.com/document/d/1Wb2Zp-FZGfT_w5dRbFDn7HJrSirsg5RQvndXyvh9u0s/edit
+
 ## Colab
 To run this model, we use online machine learning tool called Colaboratory (Colab): https://colab.research.google.com
 
