@@ -9,7 +9,7 @@ from albumentations import (HorizontalFlip, ShiftScaleRotate, Normalize, Resize,
 from albumentations.pytorch import ToTensorV2
 from skimage import io, transform
 import matplotlib.pyplot as plt
-from data_preprocess import Nuclie_data, get_transforms, get_mask, image_convert, image_convert, mask_convert, plot_img
+import data_preprocess
 
 ##################################
 
@@ -19,16 +19,52 @@ print(f"Using {device} device")
 
 #loading the data
 data_dir = '/Users/linyang/Downloads/stage1_train'
-data = Nuclie_data(data_dir)
+data = data_preprocess.Nuclie_data(data_dir)
 
 #data size
 print(data.__len__())
 
-#splitting to trainset and validation set and loading the data with batch size of 10
-trainset, validset = random_split(data, [580, 90])
-train_loader = torch.utils.data.DataLoader(dataset=trainset, batch_size=10, shuffle=True)
-valid_loader = torch.utils.data.DataLoader(dataset=validset, batch_size=10)
 
-#view images and their corresponding combined marks
-plot_img(5, train_loader, device)
+#randomly view 'no_' number of images
+data_preprocess.plot_img(5, data, device)
+
+#import model
+import torchvision.models.segmentation
+from torchvision.models.detection.faster_rcnn import FastRCNNPredictor
+
+model=torchvision.models.detection.maskrcnn_resnet50_fpn(pretrained=True)
+# replace the classifier with a new one, that hasnum_classes which is user-defined
+num_classes = 2  # 1 class (nuclei) + background
+# get number of input features for the classifier
+in_features = model.roi_heads.box_predictor.cls_score.in_features
+# replace the pre-trained head with a new one
+model.roi_heads.box_predictor = FastRCNNPredictor(in_features, num_classes)
+model.to(device)
+
+optimizer = torch.optim.AdamW(params=model.parameters(), lr=1e-5)
+model.train()
+
+#############################Trainning model################################
+train_set = 580
+for i in range(1001):
+    # images, targets = get_target()
+    idx = random.randint(0, train_set - 1)
+    images, targets = data.__getitem__(idx)
+    # iter_ = iter(train_loader)
+    # images,masks = next(iter_)
+    images = list(image.to(device) for image in images)
+    targets = [{k: v.to(device) for k, v in t.items()} for t in targets]
+
+    print(f"start iteration {i}")
+    optimizer.zero_grad()
+    loss_dict = model(images, targets)
+
+    losses = sum(loss for loss in loss_dict.values())
+    losses.backward()
+    optimizer.step()
+    print(i, 'loss:', losses.item())
+    if i % 100 == 0:
+        torch.save(model.state_dict(), str(i) + ".torch")
+
+
 
