@@ -72,10 +72,12 @@ $$AP = \frac {TP} {TP + FP}$$
 
 $$Recall = \frac {TP} {TP + FN}$$
 
-**reference**: 
+**reference**: https://www.kaggle.com/code/mauriciofigueiredo/mask-rcnn-example-with-matterport
 
 
 ## Model Optimization 
-Once we have the trained model with best perform from steps above. We will start looking at Model Optimization. This step is complicated and also very time consuming. But the tuning hyper-parameters are usually the first step when optimaize the model. There is a good reference to introduce what kinds of hyper-parameters we should be aware of. 
+Once we have the trained model with the best performance from the steps above, we will start looking at Model Optimization. This step is complicated and also very time-consuming.
 
-https://towardsdatascience.com/hyper-parameter-tuning-techniques-in-deep-learning-4dad592c63c8
+But tuning hyper-parameters are usually the first step when optimizing the model. There is an excellent reference to introduce what kinds of hyper-parameters we should be aware of. 
+
+**reference**: https://towardsdatascience.com/hyper-parameter-tuning-techniques-in-deep-learning-4dad592c63c8
