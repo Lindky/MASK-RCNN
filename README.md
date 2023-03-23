@@ -22,7 +22,7 @@ Colab is a free Jupyter notebook environment that runs entirely in the cloud. Mo
 
 This is a example how to train MASK-RCNN using pre-trained pytorch model on Colab:
 
-https://github.com/Lindky/MASK-RCNN/blob/main/Mask-RCNN.ipynb
+https://github.com/Lindky/MASK-RCNN/blob/main/Mask_RCNN_Colab.ipynb
 
 ### Note: 
 1. To train the model on Colab, you first need to upload the training dataset to the google drive. **Make sure you upload your data to the path: '/content/MyDrive'**, but not sync your data from your computer to the google drive. (Colan can access to your google drive but not the private computor backup folder)
