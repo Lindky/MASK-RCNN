@@ -69,6 +69,7 @@ TP = True Positive. <br /> FP = False Positive   <br /> FN = False Negative
 
 $$AP = \frac {TP} {TP + FP}$$
 
+<br>
 
 $$Recall = \frac {TP} {TP + FN}$$
 
