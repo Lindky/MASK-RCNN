@@ -59,3 +59,18 @@ print(f"Using {device} device")
 ```
 
 Note: When you install ***numpy***, make sure the version is 1.23.5 to aviod some potential errors.
+
+## Model Evaluation
+
+There are some certain indicators people usually used for the machine learning model evaluation: <br>
+AP (Precision), Recall, mAP (mean Average Precision).
+
+TP = True Positive. <br /> FP = False Positive   <br /> FN = False Negative
+
+$$AP = \frac {TP} {TP + FP}$$
+
+
+$$Recall = \frac {TP} {TP + FN}$$
+
+**reference**: 
+
