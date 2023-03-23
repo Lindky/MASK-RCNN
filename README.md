@@ -21,7 +21,7 @@ This is a example how to train MASK-RCNN using pre-trained pytorch model on Cola
 
 https://github.com/Lindky/MASK-RCNN/blob/main/Mask-RCNN.ipynb
 
-## Note: 
+### Note: 
 1. To train the model on Colab, you first need to upload the training dataset to the google drive. **Make sure you upload your data to the path: '/content/MyDrive'**, but not sync your data from your computer to the google drive. (Colan can access to your google drive but not the private computor backup folder)
 
 2. You can use this code to mount the google drive on Colab:
@@ -38,7 +38,7 @@ data_dir = '/content/MyDrive/MyDrive/stage1_train/'
 data = Nuclie_data(data_dir)
 ```
 
-### Run model on local
+## Run model on local
 If you want to train the model on your local computer, make sure that your GPU device is CUDA (most commonly used for most of machine learning studies)
 
 To check your GPU device:
