@@ -74,3 +74,8 @@ $$Recall = \frac {TP} {TP + FN}$$
 
 **reference**: 
 
+
+## Model Optimization 
+Once we have the trained model with best perform from steps above. We will start looking at Model Optimization. This step is complicated and also very time consuming. But the tuning hyper-parameters are usually the first step when optimaize the model. There is a good reference to introduce what kinds of hyper-parameters we should be aware of. 
+
+https://towardsdatascience.com/hyper-parameter-tuning-techniques-in-deep-learning-4dad592c63c8
