@@ -2,8 +2,8 @@
 Final project for the class MBP1413H
 
 
-The functions used in the Mask-RCNN.py are saved in the functions folder.
-Software: Pytorch 
+The functions used in the **Mask-RCNN.py** are saved in the functions folder. <br>
+Software: **Pytorch**
 
 **dataset:** https://www.kaggle.com/competitions/data-science-bowl-2018/data
 
