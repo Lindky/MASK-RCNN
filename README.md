@@ -20,14 +20,12 @@ To run this model, we use online machine learning tool called Colaboratory (Cola
 
 Colab is a free Jupyter notebook environment that runs entirely in the cloud. Most importantly, it does not require a setup. (Most of libraries are pre-installed). It provides free GPU in cloud to do then simple image proccessing, which is suitable for this project.
 
-This is a example how to train MASK-RCNN using pre-trained pytorch model on Colab:
-
+This is a example how to train MASK-RCNN using pre-trained pytorch model on Colab: <br>
 https://github.com/Lindky/MASK-RCNN/blob/main/Mask_RCNN_Colab.ipynb
 
-**references:**
-
+### references: <br>
 https://towardsdatascience.com/train-mask-rcnn-net-for-object-detection-in-60-lines-of-code-9b6bbff292c3
-https://github.com/sagieppel/Train_Mask-RCNN-for-object-detection-in_In_60_Lines-of-Code/blob/7a8c899f8cc7ecd57d704767b30b116bccf44e78/train.py#L2
+https://github.com/sagieppel/Train_Mask-RCNN-for-object-detection-in_In_60_Lines-of-Code/blob/7a8c899f8cc7ecd57d704767b30b116bccf44e78/train.py#L2 <br>
 https://www.kaggle.com/code/robinteuwens/mask-rcnn-detailed-starter-code/notebook#Training
 https://bjornkhansen95.medium.com/mask-r-cnn-for-segmentation-using-pytorch-8bbfa8511883
 https://pytorch.org/tutorials/intermediate/torchvision_tutorial.html
