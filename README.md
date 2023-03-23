@@ -24,7 +24,8 @@ This is a example how to train MASK-RCNN using pre-trained pytorch model on Cola
 
 https://github.com/Lindky/MASK-RCNN/blob/main/Mask_RCNN_Colab.ipynb
 
-references: 
+***references:***
+
 https://towardsdatascience.com/train-mask-rcnn-net-for-object-detection-in-60-lines-of-code-9b6bbff292c3
 https://github.com/sagieppel/Train_Mask-RCNN-for-object-detection-in_In_60_Lines-of-Code/blob/7a8c899f8cc7ecd57d704767b30b116bccf44e78/train.py#L2
 https://www.kaggle.com/code/robinteuwens/mask-rcnn-detailed-starter-code/notebook#Training
