@@ -5,7 +5,9 @@ Final project for the class MBP1413H
 The functions used in the Mask-RCNN.py are saved in the functions folder.
 Software: Pytorch 
 
-***dataset:*** https://www.kaggle.com/competitions/data-science-bowl-2018/data
+**dataset:** https://www.kaggle.com/competitions/data-science-bowl-2018/data
+
+**Note:** Once you downloaded the dataset from the website, please check the number of file you have. It should contain 670 folders in ***stage1_train*** folder. If you found you have more than 670 files, indicating there is a hidden file. Please remove it before following this tutorial.
 
 MASK-RCNN paper: 
 https://doi.org/10.48550/arXiv.1703.06870
@@ -35,3 +37,16 @@ e.g.
 data_dir = '/content/MyDrive/MyDrive/stage1_train/'
 data = Nuclie_data(data_dir)
 ```
+
+### Run model on local
+If you want to train the model on your local computer, make sure that your GPU device is CUDA (most commonly used for most of machine learning studies)
+
+To check your GPU device:
+
+```
+# Get cpu or gpu device for training.
+device = "cuda" if torch.cuda.is_available() else "mps" if torch.backends.mps.is_available() else "cpu"
+print(f"Using {device} device")
+```
+
+Note: When you install ***numpy***, make sure the version is 1.23.5 to aviod some potential errors.
