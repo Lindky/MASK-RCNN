@@ -24,6 +24,13 @@ This is a example how to train MASK-RCNN using pre-trained pytorch model on Cola
 
 https://github.com/Lindky/MASK-RCNN/blob/main/Mask_RCNN_Colab.ipynb
 
+references: 
+https://towardsdatascience.com/train-mask-rcnn-net-for-object-detection-in-60-lines-of-code-9b6bbff292c3
+https://github.com/sagieppel/Train_Mask-RCNN-for-object-detection-in_In_60_Lines-of-Code/blob/7a8c899f8cc7ecd57d704767b30b116bccf44e78/train.py#L2
+https://www.kaggle.com/code/robinteuwens/mask-rcnn-detailed-starter-code/notebook#Training
+https://bjornkhansen95.medium.com/mask-r-cnn-for-segmentation-using-pytorch-8bbfa8511883
+https://pytorch.org/tutorials/intermediate/torchvision_tutorial.html
+
 ### Note: 
 1. To train the model on Colab, you first need to upload the training dataset to the google drive. **Make sure you upload your data to the path: '/content/MyDrive'**, but not sync your data from your computer to the google drive. (Colan can access to your google drive but not the private computor backup folder)
 
