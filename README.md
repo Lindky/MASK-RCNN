@@ -60,7 +60,7 @@ print(f"Using {device} device")
 
 Note: When you install ***numpy***, make sure the version is 1.23.5 to aviod some potential errors.
 
-## Model Evaluation
+## Evaluation
 
 There are some certain indicators people usually used for the machine learning model evaluation: <br>
 AP (Precision), Recall, mAP (mean Average Precision).
@@ -76,7 +76,7 @@ $$Recall = \frac {TP} {TP + FN}$$
 **reference**: https://www.kaggle.com/code/mauriciofigueiredo/mask-rcnn-example-with-matterport
 
 
-## Model Optimization 
+## Optimization 
 Once we have the trained model with the best performance from the steps above, we will start looking at Model Optimization. This step is complicated and also very time-consuming.
 
 But tuning hyper-parameters are usually the first step when optimizing the model. There is an excellent reference to introduce what kinds of hyper-parameters we should be aware of. 
