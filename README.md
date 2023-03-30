@@ -70,7 +70,7 @@ $$Recall = \frac {TP} {TP + FN}$$
 
 ### 3. Intersection of Union (IoU)
 Standard way to evaluate the image segmentation.
-$$AP = \frac {TP} {TP + FP + FN}$$
+$$IoU = \frac {TP} {TP + FP + FN}$$
 
 IoU explaination with example: https://www.youtube.com/watch?v=0FmNxqLFeYo&t=544s <br>
 <br>
