@@ -77,6 +77,8 @@ IoU explaination with example: https://www.youtube.com/watch?v=0FmNxqLFeYo&t=544
 COCO evaluation format explaination: <br> 
 https://stackoverflow.com/questions/56002220/are-these-the-expected-results-of-tensorflow-object-detection-evaluation-using-m
 
+**Notes:** The COCO evaluation functions (**coco_eval.py**) come from https://github.com/pytorch/vision/tree/main/references/detection
+
 
 ## Optimization 
 This step is complicated and also very time-consuming.
