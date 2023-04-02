@@ -2,7 +2,7 @@
 Final project for the class MBP1413H
 
 
-The functions used in the **Mask-RCNN.py** are saved in the functions folder. <br>
+The functions used in the **MASK-RCNN-full.ipynb** are saved in the scripts folder. <br>
 Software: **Pytorch**
 
 **dataset:** https://www.kaggle.com/competitions/data-science-bowl-2018/data
@@ -21,7 +21,7 @@ To run this model, we use online machine learning tool called Colaboratory (Cola
 Colab is a free Jupyter notebook environment that runs entirely in the cloud. Most importantly, it does not require a setup. (Most of libraries are pre-installed). It provides free GPU in cloud to do then simple image proccessing, which is suitable for this project.
 
 This is a example how to train MASK-RCNN using pre-trained pytorch model on Colab: <br>
-https://github.com/Lindky/MASK-RCNN/blob/main/Mask_RCNN_Colab.ipynb
+https://github.com/Lindky/MASK-RCNN/blob/main/MASK-RCNN-full.ipynb
 
 ### references: <br>
 https://towardsdatascience.com/train-mask-rcnn-net-for-object-detection-in-60-lines-of-code-9b6bbff292c3
@@ -38,34 +38,22 @@ https://pytorch.org/tutorials/intermediate/torchvision_tutorial.html
 from google.colab import drive
 drive.mount('/content/MyDrive')
 ```
-After running this command, now you can access your data in google drvie from Colab 
-e.g.
+After running this command, now you can access your google drvie from Colab 
 
-```
-#loading the data
-data_dir = '/content/MyDrive/MyDrive/stage1_train/'
-data = Nuclie_data(data_dir)
-```
+**3. The training dataset should be uploaded to Colab virtual machine (VM):**
 
-## Run model on local
-If you want to train the model on your local computer, make sure that your GPU device is CUDA (most commonly used for most of machine learning studies)
+How to upload the file from google drive to Colab:
+https://www.youtube.com/watch?v=BuuH0wsJ8-k
 
-To check your GPU device:
 
-```
-# Get cpu or gpu device for training.
-device = "cuda" if torch.cuda.is_available() else "mps" if torch.backends.mps.is_available() else "cpu"
-print(f"Using {device} device")
-```
-
-Note: When you install ***numpy***, make sure the version is 1.23.5 to aviod some potential errors.
 
 ## Evaluation
 
-There are some certain indicators people usually used for the machine learning model evaluation: <br>
-AP (Precision), Recall, mAP (mean Average Precision).
+There are some certain matrics people usually used for the machine learning model evaluation: <br>
+### 1. AP (Precision), Recall, mAP (mean Average Precision).
 
 TP = True Positive. <br /> FP = False Positive   <br /> FN = False Negative
+<br>
 
 $$AP = \frac {TP} {TP + FP}$$
 
@@ -75,10 +63,26 @@ $$Recall = \frac {TP} {TP + FN}$$
 
 **reference**: https://www.kaggle.com/code/mauriciofigueiredo/mask-rcnn-example-with-matterport
 
+### 2. Overall Accuracy
+2.1 Convert the predicted image and ground truth into 1-D array. <br>
+2.2 Compare the pixels between image and ground truth <br />
+**Notes:** May not precisely evaluate the image segmentation.
+
+### 3. Intersection of Union (IoU)
+Standard way to evaluate the image segmentation.
+$$IoU = \frac {TP} {TP + FP + FN}$$
+
+IoU explaination with example: https://www.youtube.com/watch?v=0FmNxqLFeYo&t=544s <br>
+<br>
+COCO evaluation format explaination: <br> 
+https://stackoverflow.com/questions/56002220/are-these-the-expected-results-of-tensorflow-object-detection-evaluation-using-m
+
+**Notes:** The COCO evaluation functions (**coco_eval.py**) come from https://github.com/pytorch/vision/tree/main/references/detection
+
 
 ## Optimization 
-Once we have the trained model with the best performance from the steps above, we will start looking at Model Optimization. This step is complicated and also very time-consuming.
+This step is complicated and also very time-consuming.
 
-But tuning hyper-parameters are usually the first step when optimizing the model. There is an excellent reference to introduce what kinds of hyper-parameters we should be aware of. 
+Tuning hyper-parameters is usually the first step when optimizing the model. There is an reference to introduce what kinds of hyper-parameters we should be aware of. 
 
 **reference**: https://towardsdatascience.com/hyper-parameter-tuning-techniques-in-deep-learning-4dad592c63c8
