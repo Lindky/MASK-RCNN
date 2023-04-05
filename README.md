@@ -61,7 +61,7 @@ $$AP = \frac {TP} {TP + FP}$$
 
 $$Recall = \frac {TP} {TP + FN}$$
 
-**reference**: https://www.kaggle.com/code/mauriciofigueiredo/mask-rcnn-example-with-matterport
+**reference**: https://hasty.ai/docs/mp-wiki/metrics/map-mean-average-precision
 
 ### 2. Overall Accuracy
 2.1 Convert the predicted image and ground truth into 1-D array. <br>
@@ -72,7 +72,10 @@ $$Recall = \frac {TP} {TP + FN}$$
 Standard way to evaluate the image segmentation.
 $$IoU = \frac {TP} {TP + FP + FN}$$
 
-IoU explaination with example: https://www.youtube.com/watch?v=0FmNxqLFeYo&t=544s <br>
+IoU explaination with example: <br>
+https://www.youtube.com/watch?v=0FmNxqLFeYo&t=544s <br>
+https://hasty.ai/docs/mp-wiki/metrics/iou-intersection-over-union
+<br>
 <br>
 COCO evaluation format explaination: <br> 
 https://stackoverflow.com/questions/56002220/are-these-the-expected-results-of-tensorflow-object-detection-evaluation-using-m
