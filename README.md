@@ -68,7 +68,7 @@ $$Recall = \frac {TP} {TP + FN}$$
 2.2 Compare the pixels between image and ground truth <br />
 **Notes:** May not precisely evaluate the image segmentation.
 
-### 3. Intersection of Union (IoU)
+### 3. Intersection over Union (IoU)
 Standard way to evaluate the image segmentation.
 $$IoU = \frac {TP} {TP + FP + FN}$$
 
