@@ -1,9 +1,12 @@
 # MASK-RCNN
 Final project for the class MBP1413H
 
-
+**MASK-RCNN-full.ipynb** is the main script used for model training. <br>
+ <br>
 The functions used in the **MASK-RCNN-full.ipynb** are saved in the scripts folder. <br>
-Software: **Pytorch**
+Software: **Pytorch** <br>
+
+**Model evaluation scripts** saved in the evaluation folder  
 
 **dataset:** https://www.kaggle.com/competitions/data-science-bowl-2018/data
 
