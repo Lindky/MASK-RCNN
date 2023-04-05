@@ -9,6 +9,9 @@ Software: **Pytorch**
 
 **Note:** Once you downloaded the dataset from the website, please check the number of file you have. It should contain 670 folders in ***stage1_train*** folder. If you found you have more than 670 files, indicating there is a hidden file. Please remove it before following this tutorial.
 
+### Final model
+https://drive.google.com/file/d/1-ijGaZUF8F6MG7K-jPfwW6BDXG6GXF_c/view?usp=sharing
+
 MASK-RCNN paper: 
 https://doi.org/10.48550/arXiv.1703.06870
 
