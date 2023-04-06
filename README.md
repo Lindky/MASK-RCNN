@@ -1,5 +1,8 @@
-# MASK-RCNN
-Final project for the class MBP1413H
+# Automated nuclei detection and segmentation using Mask-RCNN model
+
+Final project for the class MBP1413H. <br>
+Group memebr: Lin Yang, Luomeng Tan, Magnus Lam
+
 
 **MASK-RCNN-full.ipynb** is the main script used for model training. <br>
  <br>
@@ -15,11 +18,6 @@ Software: **Pytorch** <br>
 ### Final model
 https://drive.google.com/file/d/1-ijGaZUF8F6MG7K-jPfwW6BDXG6GXF_c/view?usp=sharing
 
-MASK-RCNN paper: 
-https://doi.org/10.48550/arXiv.1703.06870
-
-Google docs:
-https://docs.google.com/document/d/1Wb2Zp-FZGfT_w5dRbFDn7HJrSirsg5RQvndXyvh9u0s/edit
 
 ## Colab
 To run this model, we use online machine learning tool called Colaboratory (Colab): https://colab.research.google.com
@@ -29,7 +27,7 @@ Colab is a free Jupyter notebook environment that runs entirely in the cloud. Mo
 This is a example how to train MASK-RCNN using pre-trained pytorch model on Colab: <br>
 https://github.com/Lindky/MASK-RCNN/blob/main/MASK-RCNN-full.ipynb
 
-### references: <br>
+### References for some tutorials and codes: <br>
 https://towardsdatascience.com/train-mask-rcnn-net-for-object-detection-in-60-lines-of-code-9b6bbff292c3
 https://github.com/sagieppel/Train_Mask-RCNN-for-object-detection-in_In_60_Lines-of-Code/blob/7a8c899f8cc7ecd57d704767b30b116bccf44e78/train.py#L2 <br>
 https://www.kaggle.com/code/robinteuwens/mask-rcnn-detailed-starter-code/notebook#Training
