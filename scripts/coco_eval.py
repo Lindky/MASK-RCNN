@@ -5,9 +5,102 @@ from contextlib import redirect_stdout
 import numpy as np
 import pycocotools.mask as mask_util
 import torch
+import torchvision.models.detection.mask_rcnn
+
 from pycocotools.coco import COCO
 from pycocotools.cocoeval import COCOeval
+from pycocotools import mask as coco_mask
 
+def convert_to_coco_api(ds, rangea = range(581, 670)):
+    coco_ds = COCO()
+    # annotation IDs need to start at 1, not 0, see torchvision issue #1530
+    ann_id = 1
+    dataset = {"images": [], "categories": [], "annotations": []}
+    categories = set()
+    for img_idx in rangea:
+        # find better way to get target
+        # targets = ds.get_annotations(img_idx)
+        img, targets = ds.__getitem__(img_idx)
+        image_id = targets["image_id"].item()
+        img_dict = {}
+        img_dict["id"] = image_id
+        img_dict["height"] = img.shape[-2]
+        img_dict["width"] = img.shape[-1]
+        dataset["images"].append(img_dict)
+        bboxes = targets["boxes"].clone()
+        bboxes[:, 2:] -= bboxes[:, :2]
+        bboxes = bboxes.tolist()
+        labels = targets["labels"].tolist()
+        areas = targets["area"].tolist()
+        iscrowd = targets["iscrowd"].tolist()
+        if "masks" in targets:
+            masks = targets["masks"]
+            # make masks Fortran contiguous for coco_mask
+            masks = masks.permute(0, 2, 1).contiguous().permute(0, 2, 1)
+        if "keypoints" in targets:
+            keypoints = targets["keypoints"]
+            keypoints = keypoints.reshape(keypoints.shape[0], -1).tolist()
+        num_objs = len(bboxes)
+        for i in range(num_objs):
+            ann = {}
+            ann["image_id"] = image_id
+            ann["bbox"] = bboxes[i]
+            ann["category_id"] = labels[i]
+            categories.add(labels[i])
+            ann["area"] = areas[i]
+            ann["iscrowd"] = iscrowd[i]
+            ann["id"] = ann_id
+            if "masks" in targets:
+                ann["segmentation"] = coco_mask.encode(masks[i].numpy())
+            if "keypoints" in targets:
+                ann["keypoints"] = keypoints[i]
+                ann["num_keypoints"] = sum(k != 0 for k in keypoints[i][2::3])
+            dataset["annotations"].append(ann)
+            ann_id += 1
+    dataset["categories"] = [{"id": i} for i in sorted(categories)]
+    coco_ds.dataset = dataset
+    coco_ds.createIndex()
+    return coco_ds
+
+def _get_iou_types(model):
+    model_without_ddp = model
+    if isinstance(model, torch.nn.parallel.DistributedDataParallel):
+        model_without_ddp = model.module
+    iou_types = ["bbox"]
+    if isinstance(model_without_ddp, torchvision.models.detection.MaskRCNN):
+        iou_types.append("segm")
+    if isinstance(model_without_ddp, torchvision.models.detection.KeypointRCNN):
+        iou_types.append("keypoints")
+    return iou_types
+
+def evaluate_IoU(data, model, rangea, device):
+    coco_api = convert_to_coco_api(data, rangea)
+    iou_types = _get_iou_types(model)
+    coco_evaluator = CocoEvaluator(coco_api, iou_types)
+
+    cpu_device = torch.device("cpu")
+    for idx in rangea:
+        image, target = data.__getitem__(idx)
+    
+        #make sure the input format is a list 
+        images = []
+        images.append(image)
+        images = list(image.to(device) for image in images)
+
+        targets = []
+        targets.append(target)
+
+        if torch.cuda.is_available():
+            torch.cuda.synchronize()
+
+        outputs = model(images)
+        outputs = [{k: v.to(cpu_device) for k, v in t.items()} for t in outputs]
+
+        res = {target["image_id"].item(): output for target, output in zip(targets, outputs)}
+        coco_evaluator.update(res)
+    coco_evaluator.accumulate()
+    coco_evaluator.summarize()
+    return coco_evaluator
 
 class CocoEvaluator:
     def __init__(self, coco_gt, iou_types):
